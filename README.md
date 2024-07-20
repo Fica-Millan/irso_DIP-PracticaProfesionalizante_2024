@@ -22,7 +22,8 @@
 Este proyecto consiste en una aplicación para la localización de vehículos. La aplicación permite a los usuarios ver la ubicación de los vehículos en un mapa en tiempo real y realizar diversas acciones relacionadas con la gestión de vehículos.
 
 <p align="center">
-  <img src="./img/pagina.jpg" alt="logo ubicar"/>
+  <img src="./img/pagina.jpg" alt="vista de la pagina"/>
+  <img src="./img/pagina_detalle_vehiculo.jpg" alt="vista de la pagina con informacion del vehículo buscado"/>
 </p>
 
 ## Tabla de Contenidos
@@ -32,7 +33,6 @@ Este proyecto consiste en una aplicación para la localización de vehículos. L
 - [Tecnologías Utilizadas](#tecnologías-utilizadas)
 - [Configuración del Entorno](#configuración-del-entorno)
 - [Uso](#uso)
-- [Pruebas](#pruebas)
 - [Documentación de MySQL](#documentación-de-mysql)
 - [Código PHP](#código-php)
 - [Manejo de Errores en JavaScript](#manejo-de-errores-en-javascript)
@@ -44,7 +44,7 @@ Este proyecto consiste en una aplicación para la localización de vehículos. L
 
 Este proyecto se desarrolló de acuerdo con la siguiente consigna recibida:
 
-> Ubinet S.A., es una empresa que se dedica al seguimiento vehicular y logística de flotas mediante geoposicionamiento. La empresa está enfocada en la generación de herramientas y productos tecnológicos de telemetría para la mejora continua de los procesos administrativos, operativos y logísticos de sus clientes. La plataforma web de administración de flotas vehiculares permite optimizar los recursos de la operación logística, reducir costos de combustible, minimizar riesgos de accidentes, proteger los activos y mejorar la administración del personal a cargo y vehículos propiedad de la empresa en su totalidad. La consigna pedía: Realizar la interfaz de usuario para una aplicación que permita visualizar una flota de vehículos y visualizar en el mapa la posición del mismo. Su página web es https://ubicar.com.ar/
+> Ubinet S.A., es una empresa que se dedica al seguimiento vehicular y logística de flotas mediante geoposicionamiento. La empresa está enfocada en la generación de herramientas y productos tecnológicos de telemetría para la mejora continua de los procesos administrativos, operativos y logísticos de sus clientes. La plataforma web de administración de flotas vehiculares permite optimizar los recursos de la operación logística, reducir costos de combustible, minimizar riesgos de accidentes, proteger los activos y mejorar la administración del personal a cargo y vehículos propiedad de la empresa en su totalidad. <br>La consigna pedía: Realizar la interfaz de usuario para una aplicación que permita visualizar una flota de vehículos y visualizar en el mapa la posición del mismo. Su página web es https://ubicar.com.ar/
 
 La implementación se ha centrado en utilizar tecnologías modernas y herramientas específicas para cumplir con estos requisitos de manera efectiva.
 
@@ -64,31 +64,36 @@ La implementación se ha centrado en utilizar tecnologías modernas y herramient
 
 1. Clona el repositorio:
    ```bash
-   git clone <URL del repositorio>
+   git clone https://github.com/Fica-Millan/irso_DIP-PracticaProfesionalizante_2024.git
    ```
 2. Navega al directorio del proyecto:
    ```bash
    cd <nombre-del-directorio>
    ```
 3. Abre el proyecto en tu editor de código.
-4. (Si usas un servidor backend) Configura las conexiones a la base de datos y otros parámetros en el archivo de configuración.
-5. Abre `index.html` en tu navegador para ver la aplicación en acción.
+
+4. Configura las conexiones a la base de datos y otros parámetros en el archivo de configuración:
+
+- Asegúrate de tener XAMPP instalado y en ejecución.
+- Configura la base de datos MySQL en config.php con los detalles correctos (puerto, usuario, contraseña, nombre de la base de datos).
+- Crea un archivo .env en el directorio raíz del proyecto y agrega tu API KEY:
+
+ ```env
+API_KEY=tu_api_key_aqui
+ ```
+6. Abre index.php en tu navegador para ver la aplicación en acción. Asegúrate de que XAMPP esté ejecutándose y que el servidor Apache y MySQL estén iniciados.
+
+
 
 ## Uso
 
-- **Abrir la Aplicación**: Abre `index.html` en tu navegador.
+- **Abrir la Aplicación**: Abre tu navegador y navega a la siguiente dirección:
+```arduino
+http://localhost/Ubinet/
+```
 - **Visualizar Vehículos**: La aplicación cargará un mapa interactivo con los vehículos marcados.
 - **Filtrar Vehículos**: Usa el menú de filtro para buscar vehículos por ID.
 - **Interacción**: Haz clic en los marcadores para ver detalles sobre cada vehículo.
-
-## Pruebas
-Asegúrate de realizar las siguientes pruebas para verificar que la aplicación funcione correctamente:
-
-1. **Verificar el Mapa**: Asegúrate de que el mapa se renderice correctamente al abrir `index.html`.
-2. **Datos de Vehículos**: Verifica que los vehículos se muestren en el mapa según los datos proporcionados en la base de datos.
-3. **Filtrar Vehículos**: Usa el menú de filtro para seleccionar diferentes vehículos y confirma que el mapa actualiza los marcadores en consecuencia.
-4. **Interacción con Marcadores**: Haz clic en los marcadores y verifica que la información del vehículo se muestra correctamente.
-5. **Error Handling**: Prueba escenarios en los que los datos de vehículos no están disponibles y confirma que la aplicación maneja estos casos sin errores.
 
 ## Documentación de MySQL
 
@@ -107,14 +112,21 @@ CREATE TABLE vehiculos (
     nombre VARCHAR(255) NOT NULL,
     latitud DOUBLE NOT NULL,
     longitud DOUBLE NOT NULL,
-    ultima_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    ultima_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    patente VARCHAR(20) NOT NULL,
+    conductor VARCHAR(255) NOT NULL,
+    vencimiento_vtv DATE NOT NULL,
+    marca VARCHAR(50) NOT NULL,
+    modelo VARCHAR(50) NOT NULL,
+    kilometros_acumulados INT NOT NULL,
+    estado VARCHAR(50) NOT NULL
 );
 
--- Insertar datos de ejemplo en la tabla vehiculos
-INSERT INTO vehiculos (nombre, latitud, longitud, ultima_actualizacion) VALUES
-('Vehículo 1', -34.603722, -58.381592, NOW()),
-('Vehículo 2', -34.615803, -58.433298, NOW()),
-('Vehículo 3', -34.634913, -58.397677, NOW());
+-- Insertar datos de ejemplo con las nuevas columnas
+INSERT INTO vehiculos (nombre, latitud, longitud, ultima_actualizacion, patente, conductor, vencimiento_vtv, marca, modelo, kilometros_acumulados, estado) VALUES
+('Vehículo 1', -34.603722, -58.381592, NOW(), 'ABC123', 'Juan Pérez', '2024-12-31', 'Toyota', 'Corolla', 50000, 'Operativo'),
+('Vehículo 2', -34.615803, -58.433298, NOW(), 'XYZ789', 'Ana Gómez', '2024-11-15', 'Honda', 'Civic', 30000, 'Mantenimiento'),
+('Vehículo 3', -34.634913, -58.397677, NOW(), 'LMN456', 'Carlos Fernández', '2024-10-20', 'Ford', 'Focus', 75000, 'Operativo');
 ```
 
 ## Código PHP

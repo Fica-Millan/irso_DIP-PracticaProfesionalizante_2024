@@ -73,6 +73,46 @@ function populateVehiculoSelect() {
     });
 }
 
+// Función para traer los datos del vehículos
+function createMarker(vehiculo) {
+    const lat = parseFloat(vehiculo.latitud);
+    const lng = parseFloat(vehiculo.longitud);
+
+    if (!isNaN(lat) && !isNaN(lng)) {
+        const marker = new google.maps.Marker({
+            position: { lat: lat, lng: lng },
+            map: map,
+            title: vehiculo.nombre
+        });
+
+        const contentString = `
+            <div>
+                <h3>${vehiculo.nombre}</h3>
+                <p><strong>Última actualización:</strong> ${vehiculo.ultima_actualizacion}</p>
+                <p><strong>Patente:</strong> ${vehiculo.patente}</p>
+                <p><strong>Conductor:</strong> ${vehiculo.conductor}</p>
+                <p><strong>Vencimiento VTV:</strong> ${vehiculo.vencimiento_vtv}</p>
+                <p><strong>Marca:</strong> ${vehiculo.marca}</p>
+                <p><strong>Modelo:</strong> ${vehiculo.modelo}</p>
+                <p><strong>Kilómetros acumulados:</strong> ${vehiculo.kilometros_acumulados}</p>
+                <p><strong>Estado:</strong> ${vehiculo.estado}</p>
+            </div>
+        `;
+
+        const infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        marker.addListener('click', () => {
+            infowindow.open(map, marker);
+        });
+
+        markers.push(marker);
+    } else {
+        console.error(`Coordenadas no válidas para el vehículo ${vehiculo.id}: ${vehiculo.latitud}, ${vehiculo.longitud}`);
+    }
+}
+
 // Función para actualizar los marcadores en el mapa
 function updateMarkers(selectedVehiculo) {
     // Eliminar todos los marcadores existentes
@@ -103,6 +143,7 @@ function updateMarkers(selectedVehiculo) {
                     title: `${vehiculo.nombre}\nÚltima actualización: ${vehiculo.ultima_actualizacion}`
                 });
                 markers.push(marker);
+                createMarker(vehiculo);
             } else {
                 console.error(`Coordenadas no válidas para el vehículo ${vehiculo.id}: ${vehiculo.latitud}, ${vehiculo.longitud}`);
             }
@@ -116,4 +157,3 @@ document.addEventListener('DOMContentLoaded', () => {
         initMap();
     }
 });
-
