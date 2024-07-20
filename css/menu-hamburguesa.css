@@ -1,0 +1,215 @@
+/* Estilo general del contenedor del encabezado */
+.header-content {
+    display: flex;
+    justify-content: space-between; /* Distribuir espacio entre logo y el resto */
+    align-items: center;
+    padding: 10px;
+}
+
+/* Estilo para el logo */
+.logo {
+    flex: 1; /* Ocupar espacio proporcional en el contenedor flex */
+    max-width: 30%; /* Máximo ancho para el logo */
+    margin-left: 0; 
+}
+
+/* Estilo general del menú de navegación*/
+#navbar{
+    flex: 2; /* Ocupa un 2/5 del espacio disponible */
+    max-width: 80%; /* Máximo ancho del menú */
+    margin: 0;
+}
+
+/* Estilo del menú */
+.menu {
+    display: flex; /* Alinear los elementos en línea por defecto */
+    justify-content: space-between; /* Espacio entre los elementos del menú */
+    align-items: center;
+    padding: 10px;
+}
+
+/* Estilo de la lista del menú */
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Alinear los elementos en línea */
+}
+
+/* Estilo de los elementos de la lista del menú */
+.menu ul li {
+    margin: 0 15px; 
+}
+
+/* Estilo para los enlaces del menú */
+.menu ul li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 1rem; 
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.menu ul li a:hover {
+    color: #ff3e40;
+}
+
+/* Estilo para el mensaje de usuario */
+.usuario{
+    color: #ff3e40;
+    padding-left: 80px;
+}
+
+/* Estilo para el botón de logout */
+button#logout {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #fff;
+    color: #ff3e40;
+    border: 2px solid #ff3e40;
+    border-radius: 15px;
+}
+
+button#logout:hover {
+    background-color: #ff3e40; 
+    color: #fff;
+}
+
+/* Estilo del botón hamburguesa */
+.hamburger {
+    padding: 10px;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: #ff3e40; 
+    border: 1px solid #ff3e40; 
+    border-radius: 4px; 
+}
+
+/* Estilo del botón hamburguesa y el contenido restante */
+.header-content > div:not(.logo) {
+    flex: 3; /* Ocupar más espacio en el contenedor flex */
+}
+
+/* Estilo del contenedor del botón hamburguesa */
+.hamburger-box {
+    width: 30px;
+    height: 25px;
+    display: inline-block;
+    position: relative;
+}
+
+/* Estilo para las líneas del menú hamburguesa */
+.hamburger-inner {
+    width: 100%;
+    height: 1px; 
+    background-color: #ff3e40; 
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.mobile-menu-toggle {
+    display: none; /* Ocultar por defecto en desktop */
+    z-index: 1000;
+}
+
+/* Estilo para el menú hamburguesa en pantallas pequeñas */
+@media screen and (max-width: 1130px) {
+    header {
+        padding: 10px 10px;
+    }
+
+    .header-content > div:not(.logo) {
+        flex: none; 
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    #navbar {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background-color: #fff;
+        width: 100%;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 2;
+    }
+
+    .menu {
+        display: block; /* Mostrar como lista vertical */
+        text-align: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        background-color: #333;
+        color: white;
+    }
+
+    .menu ul {
+        display: block; /* Alinear los elementos en columna */
+    }
+
+    .menu ul li {
+        margin: 10px 0; /* Espacio entre los elementos de la lista vertical */
+    }
+
+    .menu ul li a {
+        display: block; /* Mostrar cada enlace como bloque */
+        font-size: 1rem; /* Ajustar el tamaño del texto si es necesario */
+        padding: 15px; /* Aumentar el padding para que los enlaces sean más grandes */
+        border-radius: 8px;
+        color: white;
+    }
+
+    button#logout {
+        margin: 20px;
+    }
+
+}
+
+/* Estilo para pantallas menores de 1215px */
+@media screen and (max-width: 1215px) {
+    .usuario {
+        padding-left: 10px;
+    }   
+}
+
+/* Estilo para pantallas menores de 430px */
+@media screen and (max-width: 430px) {
+    .header-content {
+        flex-direction: row;
+        justify-content: space-between; /* Separar logo y hamburguesa en los márgenes opuestos */
+    }
+
+    .logo {
+        margin-left: 10px; 
+    }
+
+    .mobile-menu-toggle {
+        margin-right: 10px; 
+    }
+}
+
+/* Estilo para pantallas menores de 620px */
+@media screen and (max-width: 620px) {
+    .logo img {
+        height: 40px;
+    }
+}
+
+/* Estilo para pantallas menores de 400px */
+@media screen and (max-width: 400px) {
+    header {
+        padding: 10px 0px;
+    }
+}

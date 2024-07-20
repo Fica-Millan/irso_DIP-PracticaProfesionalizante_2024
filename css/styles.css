@@ -1,0 +1,98 @@
+/* Estilo general del cuerpo del documento */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para el encabezado */
+header {
+    background-color: #fff;
+    color: #333;
+    padding: 10px 70px;
+    height: 70px;
+    display: flex;
+    align-items: center; 
+}
+
+/* Contenedor de contenido del encabezado */
+.header-content {
+    display: flex;/* Usar flexbox para alinear elementos */
+    align-items: center;
+    justify-content: space-between; 
+    width: 100%; 
+}
+
+/* Estilo para la imagen del logo */
+.logo img {
+    height: 50px;
+}
+
+/* Estilo para el contenedor de controles (por ejemplo, botones o menús) */
+.controls {
+    position: absolute; /* Posicionamiento absoluto para controlar la ubicación */
+    top: 20%;
+    right: 10%;
+    transform: translate(-50%, -50%); /* Ajustar la posición al centro del punto de referencia */
+    background: white;
+    padding: 15px;
+    color: #ff3e40;
+    border-radius: 15px;
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.5); /* Sombra para darle profundidad */
+    z-index: 1; /* Asegurarse de que el elemento esté sobre otros */
+}
+
+/* Estilo para el elemento select */
+.select {
+    border: 1px solid #ff3e40; 
+    border-radius: 10px;
+    padding: 8px 12px;
+    background-color: #fff; 
+    color: #ff3e40; 
+    cursor: pointer;  /* Cambia el cursor al pasar sobre el elemento */
+    appearance: none; /* Elimina el estilo predeterminado del navegador */
+}
+
+.select:focus {
+    outline: none; /* Elimina el contorno predeterminado al hacer clic */
+    border-color:none /* Color del borde al hacer clic */
+}
+
+/* Estilo para las opciones del select */
+.select option {
+    background-color: #fff; 
+    color: #ff3e40; 
+}
+
+/* Estilo para el mapa */
+#map {
+    height: 80vh; 
+    width: 100%; 
+}
+
+/* Estilo para el pie de página */
+footer {
+    margin: 0;
+    padding: 0;
+    border: 0; 
+    overflow: hidden; /* Oculta cualquier contenido desbordante */
+}
+
+.footer-img {
+    display: block; 
+    width: 100vw;
+    height: auto; 
+}
+
+/* Estilo para el menú hamburguesa en pantallas pequeñas */
+@media screen and (max-width: 640px) {
+    .controls {
+        right: -18%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .controls {
+        right: -30%;
+    }
+}
