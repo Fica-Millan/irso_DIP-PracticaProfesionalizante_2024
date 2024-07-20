@@ -10,7 +10,6 @@ if ($conn->connect_error) {
 }
 
 // Consulta para obtener los vehículos
-//$sql = "SELECT id, nombre, latitud, longitud, ultima_actualizacion FROM vehiculos";
 $sql = "SELECT * FROM vehiculos";
 $result = $conn->query($sql);
 

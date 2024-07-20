@@ -74,14 +74,14 @@ La implementación se ha centrado en utilizar tecnologías modernas y herramient
 
 4. Configura las conexiones a la base de datos y otros parámetros en el archivo de configuración:
 
-- Asegúrate de tener XAMPP instalado y en ejecución.
-- Configura la base de datos MySQL en config.php con los detalles correctos (puerto, usuario, contraseña, nombre de la base de datos).
+- Asegúrate de tener `XAMPP` instalado y en ejecución.
+- Configura la base de datos MySQL en `config.php` con los detalles correctos (puerto, usuario, contraseña, nombre de la base de datos).
 - Crea un archivo .env en el directorio raíz del proyecto y agrega tu API KEY:
 
  ```env
 API_KEY=tu_api_key_aqui
  ```
-6. Abre index.php en tu navegador para ver la aplicación en acción. Asegúrate de que XAMPP esté ejecutándose y que el servidor Apache y MySQL estén iniciados.
+6. Abre `index.php` en tu navegador para ver la aplicación en acción. Asegúrate de que `XAMPP` esté ejecutándose y que el servidor `Apache` y `MySQL` estén iniciados.
 
 
 
@@ -145,7 +145,7 @@ if ($conn->connect_error) {
 }
 
 // Consulta para obtener los vehículos
-$sql = "SELECT id, nombre, latitud, longitud, ultima_actualizacion FROM vehiculos";
+$sql = "SELECT * FROM vehiculos";
 $result = $conn->query($sql);
 
 $vehiculos = array();
