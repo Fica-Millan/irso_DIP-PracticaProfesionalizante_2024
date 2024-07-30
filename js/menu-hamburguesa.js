@@ -7,3 +7,4 @@ function toggleMenu() {
         navbar.style.display = 'none';
     }
 }
+

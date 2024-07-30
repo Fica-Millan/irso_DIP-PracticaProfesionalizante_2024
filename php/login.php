@@ -15,8 +15,8 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 
     <!--CSS-->
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/menu-hamburguesa.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/menu-hamburguesa.css">
 
     <!--Sweet Alert-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
@@ -28,7 +28,7 @@ session_start();
     <header>
         <div class="header-content">
             <div class="logo">
-                <img src="./img/logo.jpg" alt="Ubicar Logo">
+                <img src="../img/logo.jpg" alt="Ubicar Logo">
             </div>
 
             <div class="mobile-menu-toggle">
@@ -57,7 +57,7 @@ session_start();
     <main>
         <section class="contenedor-login">
             <div>
-                <img class="img-login" src="./img/bg_login.jpg" alt="telefono celular que muestra un mapa.">
+                <img class="img-login" src="../img/bg_login.jpg" alt="telefono celular que muestra un mapa.">
             </div>
             <div class="contenedor-login_form">
                 <h2>Iniciar Sesión</h2>
@@ -67,22 +67,22 @@ session_start();
                     unset($_SESSION['error']);
                 }
                 ?>
-                <form id="loginForm" action="./php/authenticate.php" method="post">
+                <form id="loginForm" action="authenticate.php" method="post">
                     <input id="email" type="email" name="email" placeholder="Correo Electrónico" required>
                     <input id="password" type="password" name="password" placeholder="Contraseña" required>
                     <input id="button" class="btn_iniciar_sesion" type="submit" value="Iniciar Sesión">
                 </form>
-                <a class="reset-pass"  href="./php/reset_pass.php"><button class="btn-recuperar-pass">¿Olvidó su contraseña?</button></a>
+                <a class="reset-pass"  href="../php/reset_pass.php"><button class="btn-recuperar-pass">¿Olvidó su contraseña?</button></a>
             </div>
         </section>
     </main>
 
     <footer>
-        <img class="footer-img" src="./img/footer.jpg" alt="footer">
+        <img class="footer-img" src="../img/footer.jpg" alt="footer">
     </footer>
     
     <!-- Menu hamburguesa-->
-    <script src="./js/menu-hamburguesa.js"></script>
+    <script src="../js/menu-hamburguesa.js"></script>
 
 </body>
 </html>

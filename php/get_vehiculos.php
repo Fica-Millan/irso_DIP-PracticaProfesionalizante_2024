@@ -1,13 +1,9 @@
 <?php
+// Incluir el archivo de configuración que contiene la conexión a la base de datos
+require __DIR__ . '/../config/config.php';
+
+// Establecer el tipo de contenido como JSON
 header('Content-Type: application/json');
-
-// Conectar a la base de datos
-$conn = new mysqli('localhost:3307', 'root', '', 'ubinet');
-
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
 
 // Consulta para obtener los vehículos
 $sql = "SELECT * FROM vehiculos";

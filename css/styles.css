@@ -3,7 +3,12 @@ body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
+
+    position: relative;
+    min-height: 100vh;
 }
+
+/* **** HEADER *** */
 
 /* Estilo para el encabezado */
 header {
@@ -27,6 +32,89 @@ header {
 .logo img {
     height: 50px;
 }
+
+
+
+/* **** LOGIN.PHP *** */
+.contenedor-login {
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    background-color: #f4f4f4;
+}
+
+/* Imagen */
+.img-login{
+    margin: 25px;
+    padding: 20px;
+    width: 80%;
+}
+
+/* Contenedor del formulario */
+.contenedor-login_form {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    padding: 20px; 
+    margin: 20px;
+    height: 300px;
+    background-color: #fff; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+/* Estilo para el título del formulario */
+.contenedor-login_form h2 {
+    text-align: center; 
+    color: #333; 
+}
+
+/* Estilo para el formulario */
+#loginForm {
+    display: flex; 
+    flex-direction: column; 
+}
+
+/* Estilo para los campos de entrada */
+#loginForm input {
+    margin-bottom: 10px; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+}
+
+/* Estilo para el botón de iniciar sesión */
+.btn_iniciar_sesion {
+    background-color: #ff3e40; 
+    color: #fff; 
+    border: none; 
+    padding: 10px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
+}
+
+/* Estilo para el href para recuperar contraseña */
+.reset-pass{
+    text-decoration: none;
+    text-align: center;
+    display: contents;
+}
+
+/* Estilo para el botón de recuperar contraseña */
+.btn-recuperar-pass {
+    background-color: #fff; 
+    color: #ff3e40; 
+    border: none; 
+    cursor: pointer; 
+    font-size: 14px; 
+    text-align: center; 
+    display: block; 
+    margin-top: 10px; 
+}
+
+
+
+/* **** INDEX.PHP *** */
 
 /* Estilo para el contenedor de controles (por ejemplo, botones o menús) */
 .controls {
@@ -55,7 +143,7 @@ header {
 
 .select:focus {
     outline: none; /* Elimina el contorno predeterminado al hacer clic */
-    border-color:none /* Color del borde al hacer clic */
+    border:none; /* Color del borde al hacer clic */
 }
 
 /* Estilo para las opciones del select */
@@ -70,9 +158,12 @@ header {
     width: 100%; 
 }
 
+
+
+/* **** FOOTER *** */
+
 /* Estilo para el pie de página */
 footer {
-    margin: 0;
     padding: 0;
     border: 0; 
     overflow: hidden; /* Oculta cualquier contenido desbordante */
@@ -83,6 +174,10 @@ footer {
     width: 100vw;
     height: auto; 
 }
+
+
+
+/* **** MEDIA QUERIES *** */
 
 /* Estilo para el menú hamburguesa en pantallas pequeñas */
 @media screen and (max-width: 640px) {
@@ -96,3 +191,16 @@ footer {
         right: -30%;
     }
 }
+
+
+
+
+/*body {
+    position: relative;
+    min-height: 100vh;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+}*/

@@ -4,7 +4,7 @@
 
 <div align="center">
 
-   ![Estado del Proyecto](https://img.shields.io/badge/Estado-Terminado-green)
+   ![Estado del Proyecto](https://img.shields.io/badge/Estado-En%20Progreso-yellow)
    ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green)
    ![GitHub Org's stars](https://img.shields.io/github/stars/fica-millan?style=social)
    <br>
@@ -122,11 +122,49 @@ CREATE TABLE vehiculos (
     estado VARCHAR(50) NOT NULL
 );
 
--- Insertar datos de ejemplo con las nuevas columnas
+-- Insertar datos de ejemplo en la tabla vehiculos
 INSERT INTO vehiculos (nombre, latitud, longitud, ultima_actualizacion, patente, conductor, vencimiento_vtv, marca, modelo, kilometros_acumulados, estado) VALUES
 ('Vehículo 1', -34.603722, -58.381592, NOW(), 'ABC123', 'Juan Pérez', '2024-12-31', 'Toyota', 'Corolla', 50000, 'Operativo'),
 ('Vehículo 2', -34.615803, -58.433298, NOW(), 'XYZ789', 'Ana Gómez', '2024-11-15', 'Honda', 'Civic', 30000, 'Mantenimiento'),
 ('Vehículo 3', -34.634913, -58.397677, NOW(), 'LMN456', 'Carlos Fernández', '2024-10-20', 'Ford', 'Focus', 75000, 'Operativo');
+```
+
+### Creación de la Tabla `usuarios` y Ejemplo de Datos
+Para que el sistema de autenticación funcione correctamente, es necesario configurar una tabla en la base de datos para almacenar la información de los usuarios. A continuación, se explica cómo crear la tabla usuarios y cómo insertar un usuario de ejemplo con una contraseña encriptada.
+
+1. Crear la Tabla usuarios
+Ejecuta la siguiente consulta SQL para crear la tabla usuarios en tu base de datos:
+
+```sql
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+2. Insertar Datos de Ejemplo
+
+Para probar el sistema, hay que insertar un usuario de ejemplo. La contraseña debe estar encriptada, ya que asegura que las contraseñas de los usuarios estén protegidas, incluso si alguien accede a la base de datos. Utilizando `bcrypt`, un algoritmo de encriptación robusto que añade un "salt" (valor aleatorio) a la contraseña antes de encriptarla, proporcionando una mayor seguridad, para asegurar que no se almacene en texto plano.
+Sigue estos pasos:
+
+Generar la Contraseña Encriptada:
+
+Utiliza una herramienta de encriptación bcrypt, como https://bcrypt-generator.com/, para generar una versión encriptada de la contraseña. Por ejemplo, la contraseña 123456 puede encriptarse en:
+
+```perl
+$2a$12$AKjH3oWM7f9GhjioNIW/6ekn5BzZW7q/jm9MmiY/OKIEp4OvQ069S
+```
+
+Insertar el Usuario en la Base de Datos:
+
+Ejecuta la siguiente consulta SQL para insertar el usuario de ejemplo en la tabla usuarios:
+
+```sql
+INSERT INTO usuarios (nombre, email, password, creado_en)
+VALUES ('Juan Perez', 'j.perez@gmail.com', '$2a$12$AKjH3oWM7f9GhjioNIW/6ekn5BzZW7q/jm9MmiY/OKIEp4OvQ069S', CURRENT_TIMESTAMP);
 ```
 
 ## Código PHP

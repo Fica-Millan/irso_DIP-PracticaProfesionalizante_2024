@@ -18,7 +18,7 @@ function initMap() {
         });
 
         // Cargar los vehículos desde el servidor
-        fetch('php/get_vehiculos.php')
+        fetch('./get_vehiculos.php')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error en la respuesta de la red');
@@ -157,3 +157,4 @@ document.addEventListener('DOMContentLoaded', () => {
         initMap();
     }
 });
+
